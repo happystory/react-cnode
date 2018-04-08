@@ -19,7 +19,7 @@ module.exports = {
   output: {
     filename: 'server-entry.js',
     path: resolve('dist'),
-    publicPath: '/public',
+    publicPath: '/public/',
 
     // see https://doc.webpack-china.org/configuration/output#output-librarytarget
     // 入口起点的返回值将分配给 module.exports 对象，这个名称也意味着模块用于 CommonJS 环境

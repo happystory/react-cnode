@@ -20,7 +20,7 @@ const config = {
   output: {
     filename: '[name].[hash].js',
     path: resolve('dist'),
-    publicPath: '/public'
+    publicPath: '/public/'
   },
 
   resolve: {
@@ -52,6 +52,7 @@ const config = {
 };
 
 // 如果是开发环境，开启热更新
+// webpack-dev-server 3.1.2有问题 指定3.1.1版本
 if (isDev) {
   config.mode = 'development';
   config.devServer = {
@@ -67,7 +68,7 @@ if (isDev) {
     historyApiFallback: {
       index: '/public/index.html'
     }
-  }
+  };
 }
 
 module.exports = config;
