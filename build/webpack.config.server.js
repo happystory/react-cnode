@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -42,13 +41,5 @@ module.exports = {
         include: [resolve('src')]
       }
     ]
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'server.html',
-      template: resolve('src/template.html'),
-      inject: true
-    })
-  ]
+  }
 };
