@@ -12,7 +12,12 @@ module.exports = {
       jsx: true
     }
   },
-  extends: ['plugin:react/recommended', 'airbnb-base'],
+  settings: {
+    react: {
+      version: '16.5.2'
+    }
+  },
+  extends: ['airbnb-base', 'plugin:react/recommended'],
   plugins: [
     'react'
   ],
