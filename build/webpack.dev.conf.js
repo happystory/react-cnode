@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     host: '0.0.0.0',
     port: '8888',
-    contentBase: path.join(__dirname, '../dist'),
+    contentBase: false,
     hot: true,
     overlay: { warnings: false, errors: true },
     historyApiFallback: {
