@@ -12,7 +12,7 @@ app.use('/public', express.static(path.join(__dirname, '../dist')));
 
 app.get('/', (req, res) => {
   const appString = ReactSSR.renderToString(serverEntry);
-  const tempStr = template.replace('<app></app>', appString);
+  const tempStr = template.replace('<!-- app -->', appString);
   res.send(tempStr);
 });
 

@@ -6,6 +6,7 @@
   "scripts": {
     "build:client": "webpack --config build/webpack.prod.conf.js",
     "build:server": "webpack --config build/webpack.server.conf.js",
+    "dev:client": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "clear": "rimraf dist",
     "build": "npm run clear && npm run build:client && npm run build:server",
     "start": "node server/server.js"
