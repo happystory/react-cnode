@@ -5,7 +5,7 @@ const MemoryFs = require('memory-fs');
 const ReactDomServer = require('react-dom/server');
 const proxy = require('http-proxy-middleware');
 
-const serverConfig = require('../../build/webpack.dev.conf');
+const serverConfig = require('../../build/webpack.server.conf');
 
 const getTemplate = () => {
   return new Promise((resolve, reject) => {
@@ -39,14 +39,7 @@ serverCompiler.watch({}, (err, stats) => {
 
   const bundle = mfs.readFileSync(bundlePath, 'utf-8');
   const m = new Module();
-  console.log(1)
-  var code = 'module.exports = function () {console.log("abc");}';
-  m._compile(code, 'first.js');
-  var a = m.exports;
-
-  a();
   m._compile(bundle, 'server-entry.js');
-  console.log(m)
   serverBundle = m.exports.default;
 });
 
