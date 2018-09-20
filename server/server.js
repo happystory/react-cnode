@@ -4,7 +4,6 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const ReactSSR = require('react-dom/server');
 
-
 const isDev = process.env.NODE_ENV === 'development';
 const app = express();
 
