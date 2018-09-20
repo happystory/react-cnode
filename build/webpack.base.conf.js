@@ -7,7 +7,7 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './client/main.js'
+    app: './src/main.js'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -25,7 +25,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('client')]
+        include: [resolve('src')]
       }
     ]
   },

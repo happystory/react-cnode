@@ -25,7 +25,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, '../client/template.html'),
+      template: path.resolve(__dirname, '../src/template.html'),
       inject: true
     }),
     new FriendlyErrorsPlugin({

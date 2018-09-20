@@ -7,7 +7,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'production',
   target: 'node',
   entry: {
-    app: './client/server-entry.js'
+    app: './src/server-entry.js'
   },
   output: {
     filename: 'server-entry.js',
@@ -16,7 +16,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../client/template.html'),
+      template: path.resolve(__dirname, '../src/template.html'),
       filename: 'server.html',
     }),
   ]
