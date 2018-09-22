@@ -15,14 +15,16 @@ module.exports = (req, res, next) => {
     });
   }
 
-  const query = Object.assign({}, res.query);
+  const query = Object.assign({}, res.query, {
+    accesstoken: (needAccessToken && req.method === 'GET') ? user.accessToken: ''
+  });
   if (query.needAccessToken) delete query.needAccessToken;
 
   axios(`${baseUrl}${path}`, {
     method: req.method,
     params: query,
     data: Object.assign({}, req.body, {
-      accesstoken: user.accessToken
+      accesstoken: (needAccessToken && req.method === 'POST') ? user.accessToken: ''
     })
   }).then(resp => {
     if (resp.status === 200) {
