@@ -6,6 +6,7 @@ import {
 
 import TopicList from '../views/topic-list/TopicList';
 import TopicDetail from '../views/topic-detail/TopicDetail';
+import Test from '../views/test/Test';
 
 export default () => [
   <Route exact path="/" key="home" render={
@@ -13,4 +14,5 @@ export default () => [
   } />,
   <Route path="/list" key="list" component={TopicList} />,
   <Route path="/detail" key="detail" component={TopicDetail} />,
+  <Route path="/test" key="test" component={Test} />,
 ];

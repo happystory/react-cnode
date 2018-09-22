@@ -19,6 +19,9 @@ module.exports = merge(baseWebpackConfig, {
     quiet: true,
     historyApiFallback: {
       index: '/public/index.html'
+    },
+    proxy: {
+      '/api': 'http://localhost:3333/'
     }
   },
   plugins: [
