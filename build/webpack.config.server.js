@@ -4,8 +4,10 @@ function resolveApp(dir) {
   return path.join(__dirname, '..', dir);
 }
 
+const isDev = process.env.NODE_ENV === 'development';
+
 module.exports = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   target: 'node',
   entry: {
     app: resolveApp('src/server-entry.js')
