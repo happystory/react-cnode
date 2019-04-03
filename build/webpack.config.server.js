@@ -8,12 +8,12 @@ module.exports = {
   mode: 'development',
   target: 'node',
   entry: {
-    app: resolveApp('client/app.js')
+    app: resolveApp('client/server-entry.js')
   },
   output: {
     filename: 'server-entry.js',
     path: resolveApp('dist'),
-    publicPath: '',
+    publicPath: '/public/',
     libraryTarget: 'commonjs2'
   },
   module: {

@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: '[name].[hash].js',
     path: resolveApp('dist'),
-    publicPath: ''
+    publicPath: '/public/'
   },
   module: {
     rules: [
@@ -24,5 +24,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [new HtmlWebpackPlugin({
+    template: resolveApp('client/template.html')
+  })]
 };
