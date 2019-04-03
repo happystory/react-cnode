@@ -5,10 +5,12 @@ function resolveApp(dir) {
   return path.join(__dirname, '..', dir);
 }
 
-module.exports = {
-  mode: 'development',
+const isDev = process.env.NODE_ENV === 'development';
+
+const config = {
+  mode: isDev ? 'development' : 'production',
   entry: {
-    app: resolveApp('client/app.js')
+    app: resolveApp('src/index.js')
   },
   output: {
     filename: '[name].[hash].js',
@@ -18,13 +20,33 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolveApp('client')]
+        include: [resolveApp('src')]
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: resolveApp('client/template.html')
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolveApp('src/template.html')
+    })
+  ]
 };
+
+if (isDev) {
+  config.devServer = {
+    host: '0.0.0.0',
+    port: 8888,
+    contentBase: resolveApp('dist'),
+    hot: true,
+    overlay: {
+      errors: true
+    },
+    publicPath: '/public/',
+    historyApiFallback: {
+      index: '/public/index.html'
+    }
+  };
+}
+
+module.exports = config;

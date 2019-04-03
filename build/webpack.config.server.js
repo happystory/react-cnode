@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   target: 'node',
   entry: {
-    app: resolveApp('client/server-entry.js')
+    app: resolveApp('src/server-entry.js')
   },
   output: {
     filename: 'server-entry.js',
@@ -19,9 +19,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolveApp('client')]
+        include: [resolveApp('src')]
       }
     ]
   }

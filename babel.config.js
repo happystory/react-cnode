@@ -7,5 +7,6 @@ module.exports = {
         modules: false
       }
     ]
-  ]
+  ],
+  plugins: ['react-hot-loader/babel']
 };
