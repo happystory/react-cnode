@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.base');
 
 function resolveApp(dir) {
   return path.join(__dirname, '..', dir);
@@ -16,21 +18,6 @@ const config = {
     filename: '[name].[hash].js',
     path: resolveApp('dist'),
     publicPath: '/public/',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolveApp('src')],
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        include: [resolveApp('src')],
-      },
-    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -55,4 +42,4 @@ if (isDev) {
   };
 }
 
-module.exports = config;
+module.exports = merge(baseConfig, config);
