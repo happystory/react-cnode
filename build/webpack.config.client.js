@@ -10,27 +10,33 @@ const isDev = process.env.NODE_ENV === 'development';
 const config = {
   mode: isDev ? 'development' : 'production',
   entry: {
-    app: resolveApp('src/index.js')
+    app: resolveApp('src/index.js'),
   },
   output: {
     filename: '[name].[hash].js',
     path: resolveApp('dist'),
-    publicPath: '/public/'
+    publicPath: '/public/',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolveApp('src')],
+      },
+      {
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        include: [resolveApp('src')]
-      }
-    ]
+        include: [resolveApp('src')],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolveApp('src/template.html')
-    })
-  ]
+      template: resolveApp('src/template.html'),
+    }),
+  ],
 };
 
 if (isDev) {
@@ -40,12 +46,12 @@ if (isDev) {
     contentBase: resolveApp('dist'),
     hot: true,
     overlay: {
-      errors: true
+      errors: true,
     },
     publicPath: '/public/',
     historyApiFallback: {
-      index: '/public/index.html'
-    }
+      index: '/public/index.html',
+    },
   };
 }
 
