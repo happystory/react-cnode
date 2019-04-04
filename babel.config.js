@@ -4,9 +4,13 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false
-      }
-    ]
+        modules: false,
+      },
+    ],
   ],
-  plugins: ['react-hot-loader/babel']
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    'react-hot-loader/babel',
+  ],
 };
