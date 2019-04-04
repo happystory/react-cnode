@@ -3,11 +3,27 @@ const path = require('path');
 const express = require('express');
 const favicon = require('serve-favicon');
 const ReactSSR = require('react-dom/server');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 const isDev = process.env.NODE_ENV === 'development';
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extends: false }));
+
+app.use(session({
+  maxAge: 10 * 60 * 1000,
+  name: 'tid',
+  resave: false,
+  saveUninitialized: false,
+  secret: 'react cnode',
+}));
+
 app.use(favicon(path.join(__dirname, '../favicon.ico')));
+
+app.use('/api/user', require('./utils/handle-login'));
+app.use('/api', require('./utils/proxy'));
 
 if (!isDev) {
   const serverEntry = require('../dist/server-entry').default;

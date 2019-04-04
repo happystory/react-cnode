@@ -39,6 +39,12 @@ if (isDev) {
     historyApiFallback: {
       index: '/public/index.html',
     },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3333/',
+        changeOrigin: true,
+      },
+    },
   };
 }
 

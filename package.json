@@ -27,14 +27,18 @@
   "homepage": "https://github.com/happystory/react-cnode#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "prop-types": "^15.7.2",
+    "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.2",
     "react-router-dom": "^5.0.0",
+    "remove": "^0.1.5",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
